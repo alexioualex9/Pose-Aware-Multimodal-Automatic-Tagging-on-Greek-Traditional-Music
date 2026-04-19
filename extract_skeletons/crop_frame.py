@@ -3,7 +3,7 @@ import os
 import cv2
 import numpy as np
 
-from config import ALPHAPOSE_OUTPUT_DIR
+from extract_skeletons.config import ALPHAPOSE_OUTPUT_DIR
 
 
 def enhance_frame(cropped_frame):

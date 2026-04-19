@@ -2,8 +2,8 @@ import os
 
 import ffmpeg
 
-from config import ALPHAPOSE_OUTPUT_DIR, frames_dir, fps, lyra_dir
-from utils import read_scene_frames
+from extract_skeletons.config import ALPHAPOSE_OUTPUT_DIR, frames_dir, fps, lyra_dir
+from extract_skeletons.utils import read_scene_frames
 
 
 def trim_video(vid):

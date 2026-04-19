@@ -4,7 +4,7 @@ import subprocess
 
 import numpy as np
 
-from config import (
+from extract_skeletons.config import (
     ALPHAPOSE_DIR,
     A_EXPERIMENT_CONFIG,
     A_CHECKPOINT,

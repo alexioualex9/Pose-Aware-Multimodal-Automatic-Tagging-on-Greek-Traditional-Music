@@ -4,7 +4,7 @@ import subprocess
 import cv2
 import pandas as pd
 
-from config import B_EXPERIMENT_CONFIG, B_CHECKPOINT, BYTETRACK_DIR, frames_dir
+from extract_skeletons.config import B_EXPERIMENT_CONFIG, B_CHECKPOINT, BYTETRACK_DIR, frames_dir
 
 def bytetrack(vid, n_segs):
     """

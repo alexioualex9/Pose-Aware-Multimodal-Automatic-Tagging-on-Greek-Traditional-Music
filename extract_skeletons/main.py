@@ -20,14 +20,14 @@ import os
 
 import pandas as pd
 
-from alphapose import apply_alphapose, normalize_skeleton
-from bytetrack import bytetrack, get_results_bytetrack, select_best_per_frame
-from clean_dirs import delete_folders, delete_files, delete_folders2
-from crop_frame import crop_frame, store_frames
-from read_video import read_frames
-from trim_video import trim_video
-from utils import video_dancing, get_vids_server, prop_type
-from config import (
+from extract_skeletons.alphapose import apply_alphapose, normalize_skeleton
+from extract_skeletons.bytetrack import bytetrack, get_results_bytetrack, select_best_per_frame
+from extract_skeletons.clean_dirs import delete_folders, delete_files, delete_folders2
+from extract_skeletons.crop_frame import crop_frame, store_frames
+from extract_skeletons.read_video import read_frames
+from extract_skeletons.trim_video import trim_video
+from extract_skeletons.utils import video_dancing, get_vids_server, prop_type
+from extract_skeletons.config import (
     ALPHAPOSE_OUTPUT_DIR,
     BYTETRACK_DIR,
     COLUMNS,

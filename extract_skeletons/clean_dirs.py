@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from config import (
+from extract_skeletons.config import (
     ALPHAPOSE_OUTPUT_DIR,
     ALPHAPOSE_DIR,
     BYTETRACK_DIR,

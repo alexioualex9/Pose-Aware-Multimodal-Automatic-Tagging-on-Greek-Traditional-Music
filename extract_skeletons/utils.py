@@ -6,7 +6,7 @@ from io import StringIO
 import pandas as pd
 import requests
 
-from config import dance_scenes_dir, lyra_dir, fps
+from extract_skeletons.config import dance_scenes_dir, lyra_dir, fps
 
 
 def video_dancing():
