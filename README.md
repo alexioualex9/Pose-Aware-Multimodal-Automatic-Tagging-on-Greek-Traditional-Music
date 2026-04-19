@@ -47,9 +47,9 @@ The current repository includes:
 
 The overall workflow represented in this repository can be summarized as follows:
 
-1. **Video preprocessing**
+1. **Dance-scene detection**
 2. **Skeleton / pose extraction**
-3. **Dance-scene detection**
+3. **Video preprocessing**
 4. **Feature extraction**
 5. **Unimodal processing**
 6. **Multimodal fusion**
