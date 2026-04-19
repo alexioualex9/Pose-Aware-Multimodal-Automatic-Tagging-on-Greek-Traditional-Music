@@ -3,7 +3,7 @@
 This repository contains the code developed for the thesis project **“Pose-Aware Multimodal Automatic Tagging on Greek Traditional Music”**.
 
 The goal of this work is to investigate how pose-related visual information and additional modalities can be exploited for the automatic tagging and analysis of **Greek traditional music performances**.  
-The repository includes code for **skeleton extraction**, **dance-scene detection**, and **unimodal processing pipelines**, which can be used either independently or as parts of a larger multimodal framework.
+The repository includes code for **skeleton extraction**, **dance-scene detection**, **unimodal processing pipelines** and **multimodal fusion** of all combinations of audio, video and skeleton modalities with four different multimodal models in order to do automatic tagging in top-N=28 labels of Lyra Dataset.
 
 ---
 
@@ -11,6 +11,7 @@ The repository includes code for **skeleton extraction**, **dance-scene detectio
 
 Greek traditional music performances often combine multiple sources of information, including movement, posture, visual context, and musical content.  
 This project focuses on building computational tools that can process such information and support automatic semantic analysis and tagging.
+Audio analysis is borrowed from this initial project done on Lyra Dataset: https://github.com/pxaris/ccml/tree/main.
 
 The current repository includes:
 
@@ -142,6 +143,29 @@ python -m skeletons/main.py train --model_name STGCN --device cuda
 python -m skeletons/main.py eval --model_name STGCN --device cuda
 ```
 
+### Extract Video Embeddings
+
+In this setup, video embeddings are being extracted using one of five video pre-trained models. 
+
+```bash
+python -m video/extract_video_embeddings/extract_embeddings.py --dataset "lyra" --audio_model_name "ast" --seed {42, 123, 1337, 2024, 9999} --model_name {"slowfast50", "timesformer", "vitb16", "resnet50", "videomae"} --device {"cpu", "cuda"}
+```
+
+### Train Video Model
+
+In this setup, video model is being trained using frozen embeddings that have been extracted in previous step. 
+
+```bash
+python -m video/train.py --dataset "lyra" --time_window "8.00" --subset {"True", "False"} --embs "frozen" --seed {42, 123, 1337, 2024, 9999} --model_name {"slowfast50", "timesformer", "vitb16", "resnet50", "videomae"} --device {"cpu", "cuda"}
+```
+
+### Evaluate Video Model
+
+Evaluation of video model.
+
+```bash
+python -m video/eval.py --dataset "lyra" --time_window "8.00" --subset {"True", "False"} --embs "frozen" --seed {42, 123, 1337, 2024, 9999} --model_name {"slowfast50", "timesformer", "vitb16", "resnet50", "videomae"} --device {"cpu", "cuda"}
+```
 
 ---
 
