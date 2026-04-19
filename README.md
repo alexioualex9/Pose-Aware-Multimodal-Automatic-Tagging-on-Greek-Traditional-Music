@@ -39,10 +39,7 @@ The current repository includes:
 - **detect_dance_scenes/**  
   Code for training and applying models that detect dance-related scenes in video recordings.
 
-- **Unimodals/**  
-  Code related to unimodal experiments and processing pipelines.
-
-- **Unimodals/skeletons/**  
+- **skeletons/**  
   Skeleton-based unimodal processing components.
 
 ---
