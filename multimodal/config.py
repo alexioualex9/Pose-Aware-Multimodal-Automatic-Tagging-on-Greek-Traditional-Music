@@ -2,16 +2,16 @@ import os
 import torch.nn as nn
 
 # Late Fusion
-AUDIO_DIR = "/home/alexalexiou/Unimodals/ccml/save_audio_probs"
-VIDEO_DIR = "/home/alexalexiou/Unimodals/Video/video/save_video_probs"
-SKELETON_DIR = "/home/alexalexiou/Unimodals/Skeletons/STGCN/skeleton_probs"
-VIDEO_INDEX = "/home/alexalexiou/Unimodals/Video/video"
+AUDIO_DIR = "/../audio/save_audio_probs"
+VIDEO_DIR = "/../video/save_video_probs"
+SKELETON_DIR = "/../skeletons/STGCN/skeleton_probs"
+VIDEO_INDEX = "/../video"
 
 # Transformer
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
-VIDEO_EMBEDDINGS_DIR = os.path.join("/home/alexalexiou/Unimodals/Video/video/extract_video_embeddings/embeddings/lyra")
-AUDIO_EMBEDDINGS_DIR = os.path.join("/home/alexalexiou/Unimodals/ccml",'save_audio_embs')
-SKELETON_EMBEDDINGS_DIR = os.path.join("/home/alexalexiou/Unimodals/Skeletons/STGCN/embeddings/lyra")
+VIDEO_EMBEDDINGS_DIR = os.path.join("/../video/extract_video_embeddings/embeddings/lyra")
+AUDIO_EMBEDDINGS_DIR = os.path.join("/../audio",'save_audio_embs')
+SKELETON_EMBEDDINGS_DIR = os.path.join("/../skeletons/STGCN/embeddings/lyra")
 
 
 MODELS_DIR = os.path.join(ROOT_DIR, 'saved_models')
