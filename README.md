@@ -55,8 +55,6 @@ The overall workflow represented in this repository can be summarized as follows
 6. **Multimodal fusion**
 7. **Automatic tagging / classification**
 
-Each component can be studied separately or integrated into a broader end-to-end system.
-
 ---
 
 ## Data
