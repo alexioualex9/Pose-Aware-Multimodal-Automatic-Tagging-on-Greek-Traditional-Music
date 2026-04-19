@@ -60,7 +60,8 @@ The overall workflow represented in this repository can be summarized as follows
 ## Data
 
 This repository does not necessarily include the raw datasets used in the experiments.  
-Users are expected to provide their own data paths and organize the required files according to the input requirements of each script.
+Users are expected to provide their own data paths and organize the required files according to the input requirements of each 
+script.
 In all experiments of this thesis Lyra Dataset was used.
 
 Depending on the experiment, the code may use:
@@ -99,11 +100,13 @@ python -m detect_dance_scenes/main.py \
   --output-dir <OUTPUT_DIR>
 ```
 
-This step processes the input videos, detects scene boundaries, applies clip-level inference, and stores the detected dance-scene intervals in output files.
+This step processes the input videos, detects scene boundaries, applies clip-level inference, and stores the detected dance-scene 
+intervals in output files.
 
 ### Skeleton-based processing
 
-This step includes trimming videos in their dance scenes, then apply ByteTrack in order to multi-track each person, select primary dancer, apply AlphaPose in order to get skeleton of dancer and finally store keypoints with metadata in .json file.
+This step includes trimming videos in their dance scenes, then apply ByteTrack in order to multi-track each person, select 
+primary dancer, apply AlphaPose in order to get skeleton of dancer and finally store keypoints with metadata in .json file.
 
 ```bash
 python -m extract_skeletons/main.py
@@ -111,7 +114,9 @@ python -m extract_skeletons/main.py
 
 ### Create skeleton embeddings from .json file for train, validation and test sets
 
-This section contains creating skeleton embeddings for training, validation and test sets after selecting T=32 skeletons from each clip. The selection of these T skeletons is based-on a pipeline including normalization, interpolation, joint confidence, bone-length consistency, left–right symmetry, temporal jitter penalties and skeleton similarity.
+This section contains creating skeleton embeddings for training, validation and test sets after selecting T=32 skeletons from 
+each clip. The selection of these T skeletons is based-on a pipeline including normalization, interpolation, joint confidence, 
+bone-length consistency, left–right symmetry, temporal jitter penalties and skeleton similarity.
 
 ```bash
 python -m skeletons/main.py cr_embeddings --set train --device cuda
@@ -122,7 +127,10 @@ python -m skeletons/main.py cr_embeddings --set test --device cuda
 
 ### Train STGCN-like model for autotagging task
 
-The STGCN-like model is a lightweight GCN model that includes ST-GCN-like blocks with 64 channels, multi-scale temporal convolutions (kernel sizes 9 and 3), residual connections, and global average pooling followed by a linear classification head.
+The STGCN-like model that was used is a lightweight GCN model that includes ST-GCN-like blocks with 64 channels, multi-scale 
+temporal convolutions (kernel sizes 9 and 3), residual connections, and global average pooling followed by a linear 
+classification head. In contrast to deeper adaptive variants, the adjacency remains fixed throughout, which keeps the model 
+lightweight and reduces the risk of overfitting in case of using noisy skeletons.
 
 ```bash
 python -m skeletons/main.py train --model_name STGCN --device cuda
