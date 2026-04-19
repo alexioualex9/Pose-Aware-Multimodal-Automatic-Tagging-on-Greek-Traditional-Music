@@ -61,7 +61,7 @@ The overall workflow represented in this repository can be summarized as follows
 
 This repository does not necessarily include the raw datasets used in the experiments.  
 Users are expected to provide their own data paths and organize the required files according to the input requirements of each script.
-In all experiments Lyra Dataset was used.
+In all experiments of this thesis Lyra Dataset was used.
 
 Depending on the experiment, the code may use:
 
