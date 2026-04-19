@@ -116,6 +116,8 @@ python -m extract_skeletons/main.py
 
 ### Create skeleton embeddings from .json file for train, validation and test sets
 
+This section contains creating skeleton embeddings for training, validation and test sets after selecting T=32 skeletons from each clip. The selection of these T skeletons is based-on a pipeline including normalization, interpolation, joint confidence, bone-length consistency, left–right symmetry, temporal jitter penalties and skeleton similarity.
+
 ```bash
 python -m skeletons/main.py cr_embeddings --set train --device cuda
 python -m skeletons/main.py cr_embeddings --set val --device cuda
@@ -124,6 +126,8 @@ python -m skeletons/main.py cr_embeddings --set test --device cuda
 
 
 ### Train STGCN-like model for autotagging task
+
+The STGCN-like model is a lightweight GCN model that includes ST-GCN-like blocks with 64 channels, multi-scale temporal convolutions (kernel sizes 9 and 3), residual connections, and global average pooling followed by a linear classification head.
 
 ```bash
 python -m skeletons/main.py train --model_name STGCN --device cuda
