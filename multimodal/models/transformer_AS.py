@@ -330,7 +330,6 @@ class EmbCLSFusionTransformerASMasked_gate(nn.Module):
 
         # 1) Original GMU fusion with missing modality handling
         h, z, z_h_a, z_h_s = self.fusion(
-#        h, z = self.fusion(
             emb_a=emb_a,
             emb_s=emb_s,
             mask_s=mask_s,
@@ -365,12 +364,6 @@ class EmbCLSFusionTransformerASMasked_gate(nn.Module):
         if return_gates:
             gates = z.squeeze(-1)        # [B,T]
             return logits, gates, z_h_a, z_h_s
-
-
-#        if return_gates:
-#            gates = z.squeeze(-1)        # [B,T]
-#            return logits, gates
-
 
         return logits
 

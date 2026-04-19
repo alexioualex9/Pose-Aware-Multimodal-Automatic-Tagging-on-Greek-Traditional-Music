@@ -222,14 +222,6 @@ class GMUThreeModalMissingSkeletonFusion(nn.Module):
         h_s = h_s * valid_mask_f
 
         # 4) Raw gate input: missing skeleton -> learned raw missing token
-        """
-        missing_s_gate = self.missing_skel_gate_token.expand(B, T, -1)   # [B,T,Ds]
-        emb_s_gate = torch.where(
-            mask_s_bool.expand_as(emb_s),
-            emb_s,
-            missing_s_gate
-        )
-        """
         gate_in = torch.cat([h_a, h_v, h_s], dim=-1)   # [B,T,Da+Dv+Ds]
 
         z_a = torch.sigmoid(self.gate_a(gate_in)) * valid_mask_f  # [B,T,1]
@@ -288,12 +280,6 @@ class EmbCLSFusionTransformerAVSMasked_gate(nn.Module):
             d_model=d_model,
         )
 
-        """
-        self.audio_aux = ModalityAuxHead(d_model, num_labels, dropout)
-        self.video_aux = ModalityAuxHead(d_model, num_labels, dropout)
-        self.skel_aux  = ModalityAuxHead(d_model, num_labels, dropout)
-
-        """
         self.clip_pos_emb = nn.Embedding(max_clips, d_model)
         self.cls_token = nn.Parameter(torch.zeros(1, 1, d_model))
 
@@ -363,35 +349,6 @@ class EmbCLSFusionTransformerAVSMasked_gate(nn.Module):
             mask_s=mask_s,
             valid_mask=valid_mask,
         )                                                          # h: [B,T,D]
-
-        """
-        # -------------------------------------------------
-        # AUX BRANCHES (DETACHED, as in CGGM spirit)
-        # -------------------------------------------------
-        a_pool, a_present = masked_mean_pool(h_a.detach(), valid_mask)
-        v_pool, v_present = masked_mean_pool(h_v.detach(), valid_mask)
-
-        # IMPORTANT:
-        # skeleton aux uses h_s_raw and pools only on truly-present skeleton clips
-        s_pool, s_present = masked_mean_pool(h_s_raw.detach(), mask_s_used)
-
-        audio_aux_logits = self.audio_aux(a_pool)
-        video_aux_logits = self.video_aux(v_pool)
-        skel_aux_logits  = self.skel_aux(s_pool)
-
-        aux_logits = {
-            "audio": audio_aux_logits,
-            "video": video_aux_logits,
-            "skeleton": skel_aux_logits,
-        }
-
-        aux_present = {
-            "audio": a_present,       # almost always True
-            "video": v_present,       # almost always True
-            "skeleton": s_present,    # may be False for some samples
-        }
-        """
-
 
         # 2) Positional embeddings
         clip_idx = torch.arange(T, device=device)
