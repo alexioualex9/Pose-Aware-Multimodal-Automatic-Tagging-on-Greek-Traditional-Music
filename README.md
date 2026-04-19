@@ -112,7 +112,7 @@ primary dancer, apply AlphaPose in order to get skeleton of dancer and finally s
 python -m extract_skeletons/main.py
 ```
 
-### Create skeleton embeddings from .json file for train, validation and test sets
+### Create skeleton embeddings
 
 This section contains creating skeleton embeddings for training, validation and test sets after selecting T=32 skeletons from 
 each clip. The selection of these T skeletons is based-on a pipeline including normalization, interpolation, joint confidence, 
