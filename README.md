@@ -78,7 +78,7 @@ Depending on the experiment, the code may use:
 
 ### Train dance-scene detector
 
-The following script can be used to fine-tune the dance-scene detection model.
+The following script can be used to fine-tune the dance-scene detection model. In order to do so, code uses clips of 1 sec.
 
 ```bash
 python detect_dance_scenes/train_dance_detector.py \
