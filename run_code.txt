@@ -1,0 +1,14 @@
+python detect_dance_scenes/train_dance_detector.py \
+  --video-dir <VIDEO_DIR> \
+  --labels-file <LABELS_FILE> \
+  --output-dir <OUTPUT_DIR> \
+  --epochs 10 \
+  --mode full
+
+
+python detect_dance_scenes/train_dance_detector.py \
+  --video-dir <VIDEO_DIR> \
+  --labels-file <LABELS_FILE> \
+  --output-dir <OUTPUT_DIR> \
+  --checkpoint <CHECKPOINT_FILE> \
+  --mode test
