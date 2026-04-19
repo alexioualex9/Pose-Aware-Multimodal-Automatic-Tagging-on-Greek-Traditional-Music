@@ -55,8 +55,9 @@ The overall workflow represented in this repository can be summarized as follows
 2. **Skeleton / pose extraction**
 3. **Dance-scene detection**
 4. **Feature extraction**
-5. **Unimodal or multimodal processing**
-6. **Automatic tagging / classification**
+5. **Unimodal processing**
+6. **Multimodal fusion**
+7. **Automatic tagging / classification**
 
 Each component can be studied separately or integrated into a broader end-to-end system.
 
@@ -177,7 +178,6 @@ with their own local paths and experiment settings.
 - Some scripts may require pre-trained models or preprocessed data.
 - The exact structure of the input data may vary depending on the experiment.
 - It is recommended to inspect each module separately before running the complete pipeline.
-- Run each script with `--help` to see all supported arguments.
 
 ---
 
