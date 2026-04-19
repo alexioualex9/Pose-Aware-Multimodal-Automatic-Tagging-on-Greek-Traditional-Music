@@ -26,8 +26,7 @@ The current repository includes:
 .
 ├── extract_skeletons/
 ├── detect_dance_scenes/
-├── Unimodals/
-│   └── skeletons/
+├── skeletons/
 └── README.md
 ```
 
