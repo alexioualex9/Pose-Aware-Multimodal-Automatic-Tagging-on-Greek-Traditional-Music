@@ -25,8 +25,8 @@ The current repository includes:
 
 ```text
 .
-├── extract_skeletons/
 ├── detect_dance_scenes/
+├── extract_skeletons/
 ├── skeletons/
 ├── video/
 ├── multimodal/
