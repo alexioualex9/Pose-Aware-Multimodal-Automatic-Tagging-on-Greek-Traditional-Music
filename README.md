@@ -11,13 +11,15 @@ The repository includes code for **skeleton extraction**, **dance-scene detectio
 
 Greek traditional music performances often combine multiple sources of information, including movement, posture, visual context, and musical content.  
 This project focuses on building computational tools that can process such information and support automatic semantic analysis and tagging.
+Skeletons are a missing modality, extracted from in-the-wild videos, so they are noisy and a missing-data mechanism that uses learnable missing tokens is being used in this project.
 Audio analysis is borrowed from this initial project done on Lyra Dataset: https://github.com/pxaris/ccml/tree/main.
 
 The current repository includes:
 
-- skeleton extraction utilities,
 - dance-scene detection scripts,
-- unimodal processing modules.
+- skeleton extraction utilities,
+- unimodal processing modules,
+- multimdoal fusion of audio, video and skeletons.
 
 ---
 
