@@ -164,7 +164,31 @@ python -m video/train.py --dataset "lyra" --time_window "8.00" --subset {"True",
 Evaluation of video model.
 
 ```bash
-python -m video/eval.py --dataset "lyra" --time_window "8.00" --subset {"True", "False"} --embs "frozen" --seed {42, 123, 1337, 2024, 9999} --model_name {"slowfast50", "timesformer", "vitb16", "resnet50", "videomae"} --device {"cpu", "cuda"}
+python -m video/eval.py --dataset "lyra" --time_window "8.00" --subset {"True", "False"} --embs "frozen" --seed {int} --model_name {"slowfast50", "timesformer", "vitb16", "resnet50", "videomae"} --device {"cpu", "cuda"}
+```
+
+### Late Fusion
+
+Apply late fusion model by taking the average of each modality's outcome, after extracting each modality's probs.
+
+```bash
+python -m video/late_fusion.py --modalities {'a,v', 'a,s', 'v,s', 'a,v,s'} --fusion {"weighted", "mean", "sum"} --weights {"equal", "f1_macro"} --dataset "lyra" --time_window "8.00" {--subset} --seed {int} --video_model_name {"slowfast50", "timesformer", "vitb16", "resnet50", "videomae"} --skeleton_model_name "STGCN"
+```
+
+### Train Multimodal Model
+
+Train multimodal model using one of four possible models. Simple transformer applies early fusion, while Gated applies a gate mechanism in order to give weights in each modality. Cross attention model is based-on MulT-style model.
+
+```bash
+python -m mutimodal/transfomrer.py --dataset "lyra" --time_window "8.00" {--subset} --seed {int} --standardize --model_name {"seq_transformer_avs_masked", "seq_transformer_as_masked", "seq_transformer_vs_masked", "seq_transformer_av"} --transformer {"simple, "gated", "cros_attention"} --device {"cpu", "cuda"}
+```
+
+### Evaluate Multimodal Model
+
+Train multimodal model using one of four possible models. Simple transformer applies early fusion, while Gated applies a gate mechanism in order to give weights in each modality. Cross attention model is based-on MulT-style model.
+
+```bash
+python -m mutimodal/transfomrer.py --dataset "lyra" --time_window "8.00" {--subset} --seed {int} --standardize --model_name {"seq_transformer_avs_masked", "seq_transformer_as_masked", "seq_transformer_vs_masked", "seq_transformer_av"} --transformer {"simple, "gated", "cros_attention"} --device {"cpu", "cuda"} --eval_only
 ```
 
 ---
