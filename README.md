@@ -28,6 +28,8 @@ The current repository includes:
 ├── extract_skeletons/
 ├── detect_dance_scenes/
 ├── skeletons/
+├── video/
+├── multimodal/
 └── README.md
 ```
 
